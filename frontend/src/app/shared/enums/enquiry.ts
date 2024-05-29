@@ -1,8 +1,8 @@
 export enum EnquiryTopic {
   schedule = 'schedule',
   payment = 'payment',
-  sales = 'sales',
-  info = 'information',
+  docs = 'About legal Documents',
+  info = 'more information',
 }
 
 export enum EnquiryNotification {

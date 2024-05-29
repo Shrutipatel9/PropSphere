@@ -11,7 +11,6 @@ import { EnquiriesListComponent } from './enquiries-list/enquiries-list.componen
   styleUrls: ['./enquiries.page.scss'],
 })
 export class EnquiriesPage implements OnInit {
-
   @ViewChild(EnquiriesListComponent) enquiriesList: EnquiriesListComponent;
   public progressBar = false;
   public search = '';
@@ -19,43 +18,42 @@ export class EnquiriesPage implements OnInit {
   public filters = [
     {
       value: EnquiryTopic.info,
-      label: 'Information'
+      label: 'More Information',
     },
     {
-      value: EnquiryTopic.sales,
-      label: 'Sales'
+      value: EnquiryTopic.docs,
+      label: 'About Legal Documents',
     },
     {
       value: EnquiryTopic.schedule,
-      label: 'Schedule'
+      label: 'Schedule',
     },
     {
       value: EnquiryTopic.payment,
-      label: 'Payment'
+      label: 'Payment',
     },
   ];
   public sortBy = 'latest';
   public sorts = [
     {
       value: 'latest',
-      label: 'Latest'
+      label: 'Latest',
     },
     {
       value: 'oldest',
-      label: 'Oldest'
+      label: 'Oldest',
     },
     {
       value: 'title',
-      label: 'Title'
+      label: 'Title',
     },
   ];
   public user: User;
 
-
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.userService.user$.subscribe(user => this.user = user);
+    this.userService.user$.subscribe((user) => (this.user = user));
   }
 
   ionViewDidEnter() {

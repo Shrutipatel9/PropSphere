@@ -7,17 +7,16 @@ import { EnquiryTopic } from '../../enums/enquiry';
   styleUrls: ['./enquiry-badge.component.scss'],
 })
 export class EnquiryBadgeComponent implements OnInit {
-
   @Input() topic = 'residential';
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   topicColor() {
     switch (this.topic) {
       case EnquiryTopic.info:
         return 'secondary';
-      case EnquiryTopic.sales:
+      case EnquiryTopic.docs:
         return 'warning';
       case EnquiryTopic.schedule:
         return 'danger';
@@ -32,7 +31,7 @@ export class EnquiryBadgeComponent implements OnInit {
     switch (this.topic) {
       case EnquiryTopic.info:
         return 'Enquire Information';
-      case EnquiryTopic.sales:
+      case EnquiryTopic.docs:
         return 'About Sales';
       case EnquiryTopic.schedule:
         return 'About Schedule';

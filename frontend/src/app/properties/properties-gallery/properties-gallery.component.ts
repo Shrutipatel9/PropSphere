@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Property } from 'src/app/shared/interface/property';
 @Component({
   selector: 'app-properties-gallery',
   templateUrl: './properties-gallery.component.html',
@@ -7,11 +8,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class PropertiesGalleryComponent implements OnInit {
   @Input() images: string[] = [];
   @Input() showEdit = false;
+  @Input() property: Property;
   @Output() edit = new EventEmitter<boolean>();
 
   public imagePresented = 'assets/images/no-image.jpeg';
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.setImage();

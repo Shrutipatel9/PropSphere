@@ -1,6 +1,6 @@
 <ion-header translucent>
   <ion-toolbar>
-    <ion-title>Property Detail</ion-title>
+    <ion-title>Property Details</ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="location.back()">
         <ion-icon name="arrow-back-outline" style="font-size: 28px"></ion-icon>
@@ -30,7 +30,6 @@
               <div class="type">
                 <app-property-badge [type]="property.type"></app-property-badge>
               </div>
-              <div class="price"></div>
             </ion-card-content>
           </ion-card>
 
@@ -46,9 +45,6 @@
             <ion-card-header> Description </ion-card-header>
             <ion-card-content>
               {{ property.description }}
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea
-              impedit alias laborum corrupti magnam in repellat! Corrupti
-              temporibus ut eos.
             </ion-card-content>
           </ion-card>
 
@@ -81,7 +77,7 @@
           <ion-card class="property-price" *ngIf="property.price">
             <ion-card-header> Price </ion-card-header>
             <ion-card-content class="price">
-              {{ property.price | currency: property.currency:"symbol" }}
+              {{ property.price | currency : property.currency : "symbol" }}
             </ion-card-content>
           </ion-card>
 
@@ -115,9 +111,9 @@
 
               <ion-card-content>
                 <p>
-                  Maps can be a useful tool for viewing properties location &
-                  filter them by types. this also help us to know distances so
-                  that we know how far away one thing is from another.
+                  Find Precise location using map. This also help us to know
+                  distances so that we know how far away one thing is from
+                  another.
                 </p>
 
                 <ion-button expand="block" size="large" (click)="findInMap()">
