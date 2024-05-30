@@ -6,7 +6,7 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-title>Add new property</ion-title>
+    <ion-title>Add New Property</ion-title>
 
     <ion-buttons slot="end">
       <ion-button (click)="dismissModal()">
@@ -18,12 +18,12 @@
 
 <ion-content class="form ion-padding">
   <form [formGroup]="propertyForm">
-    <!-- STEP ONE -->
+    <!-- Step one -->
     <section *ngIf="step === 1">
       <ion-item lines="none">
         <ion-input
           type="text"
-          label="Name:"
+          label="Name"
           labelPlacement="floating"
           formControlName="name"
           fill="outline"
@@ -35,7 +35,7 @@
       <ion-item lines="none">
         <ion-input
           type="text"
-          label="Address:"
+          label="Address"
           labelPlacement="floating"
           formControlName="address"
           fill="outline"
@@ -48,7 +48,7 @@
         <ion-textarea
           formControlName="description"
           labelPlacement="floating"
-          label="Description:"
+          label="Description"
           placeholder="..."
           fill="outline"
           helperText="Enter property description"
@@ -79,7 +79,7 @@
       <ion-item lines="none">
         <ion-input
           type="number"
-          label="Price:"
+          label="Price"
           labelPlacement="floating"
           formControlName="price"
           fill="outline"
@@ -93,7 +93,7 @@
           type="text"
           placeholder="USD, PHP, SGD"
           labelPlacement="floating"
-          label="Currency:"
+          label="Currency"
           formControlName="currency"
           fill="outline"
           helperText="Enter property currency"
@@ -104,7 +104,7 @@
       <ion-item lines="none">
         <ion-textarea
           formControlName="features"
-          label="Features:"
+          label="Features"
           labelPlacement="floating"
           placeholder="bedroom, kitchen, ..."
           fill="outline"
@@ -113,7 +113,7 @@
       </ion-item>
 
       <div class="coord-heading">
-        <ion-text color="dark">Set Marker Position:</ion-text>
+        <ion-text color="dark">Set Location</ion-text>
         <ion-button size="small" color="primary" (click)="openMap()">
           Open Map
         </ion-button>
