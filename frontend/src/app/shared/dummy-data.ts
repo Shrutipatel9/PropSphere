@@ -17,7 +17,8 @@ const images1 = [
   'https://ik.imagekit.io/wr5lnrww0q8/REM_Folder/wall-1_1__cOWZPcFLtf.jpg',
   'https://ik.imagekit.io/wr5lnrww0q8/REM_Folder/bedroom-1_1__vaf0icwViPQ.jpg',
   'https://ik.imagekit.io/wr5lnrww0q8/REM_Folder/kitchen-1_1__ydLwMBXTp.jpg',
-  '' , ''
+  '',
+  '',
 ];
 export const users = {};
 
@@ -71,7 +72,7 @@ export const enquiries: Enquiry[] = [
     id: '04',
     date: new Date('2021/7/5'),
     title: 'Duis aute irure dolor in reprehenderit in voluptate?',
-    topic: EnquiryTopic.sales,
+    topic: EnquiryTopic.docs,
     read: true,
     property: {
       name: 'Green Planes 45 E Lorem ipsum',
@@ -151,5 +152,5 @@ export const properties: Property[] = [
       'Item 8',
     ],
     user_id: '01',
-  }
+  },
 ];

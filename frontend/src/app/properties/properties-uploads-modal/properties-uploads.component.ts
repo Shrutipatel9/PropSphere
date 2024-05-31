@@ -17,16 +17,16 @@ export class PropertiesUploadsComponent implements OnInit {
     private modalCtrl: ModalController,
     private propertiesService: PropertiesService,
     private toastCtrl: ToastController
-  ) { }
+  ) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   public dismissModal() {
     this.modalCtrl.dismiss();
   }
 
   public async onSelectFile(event: Event) {
-    const target = (event.target as HTMLInputElement);
+    const target = event.target as HTMLInputElement;
     const files = target.files as FileList;
     if (files) {
       // We set preview images
@@ -45,10 +45,16 @@ export class PropertiesUploadsComponent implements OnInit {
 
   public async upload() {
     if (!this.selectedFiles) {
-      return this.presentToast('Please, select images to upload.', 300, 'danger');
+      return this.presentToast(
+        'Please, select images to upload.',
+        300,
+        'danger'
+      );
     }
-    const res = await this.propertiesService
-      .addPropertyImage(this.selectedFiles, this.property.property_id);
+    const res = await this.propertiesService.addPropertyImage(
+      this.selectedFiles,
+      this.property.property_id
+    );
     if (!res || res.status !== 201) {
       const msg = 'Error: Something went wrong, please try again later.';
       this.presentToast(`Error: ${res.message || msg}`, 3000, 'danger');
@@ -72,18 +78,22 @@ export class PropertiesUploadsComponent implements OnInit {
       fr.onload = (e: any) => {
         resolve(e.target.result);
       };
-      fr.onerror = e => {
+      fr.onerror = (e) => {
         reject(e);
       };
       fr.readAsDataURL(file);
     });
   }
 
-  private async presentToast(message: string, duration = 3000, color = 'success') {
+  private async presentToast(
+    message: string,
+    duration = 3000,
+    color = 'success'
+  ) {
     const toast = await this.toastCtrl.create({
       message,
       duration,
-      color
+      color,
     });
     toast.present();
   }
