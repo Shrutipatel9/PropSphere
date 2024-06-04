@@ -1,4 +1,13 @@
-import { Component, ComponentFactoryResolver, EventEmitter, Injector, Input, OnChanges, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ComponentFactoryResolver,
+  EventEmitter,
+  Injector,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as L from 'leaflet';
 import { PropertiesService } from 'src/app/properties/properties.service';
@@ -15,7 +24,6 @@ import { MapService } from '../map.service';
   styleUrls: ['./map-leaflet.component.scss'],
 })
 export class MapLeafletComponent implements OnInit, OnChanges {
-
   @Input() clickAddMarker = false;
   @Input() showPropertyMarkers = true;
   @Input() visibleMarkerType: string[] = [];
@@ -27,7 +35,7 @@ export class MapLeafletComponent implements OnInit, OnChanges {
     [PropertyType.residential]: null,
     [PropertyType.commercial]: null,
     [PropertyType.industrial]: null,
-    [PropertyType.land]: null
+    [PropertyType.land]: null,
   };
   private center = { lat: 8.947416086535465, lng: 125.5451552207221 };
   private markers: L.Marker[] = [];
@@ -40,17 +48,16 @@ export class MapLeafletComponent implements OnInit, OnChanges {
     private injector: Injector,
     private storage: StorageService,
     private activatedRoutes: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.propertiesService.properties$.subscribe(properties => {
+    this.propertiesService.properties$.subscribe((properties) => {
       this.properties = properties;
       if (this.map) {
         this.setMapMarkers();
       }
     });
     this.initMap().then(() => {
-
       this.map.on('dragend', () => {
         const center = this.map.getCenter();
         console.log('drag ended.', center);
@@ -91,7 +98,7 @@ export class MapLeafletComponent implements OnInit, OnChanges {
   }
 
   public findMarker(lat: number, lng: number) {
-    const foundMarker = this.markers.find(marker => {
+    const foundMarker = this.markers.find((marker) => {
       const latLng = marker.getLatLng();
       return latLng.lat === lat && latLng.lng === lng;
     });
@@ -110,11 +117,13 @@ export class MapLeafletComponent implements OnInit, OnChanges {
       center: [this.center.lat, this.center.lng],
       zoom: 18,
       minZoom: 16,
-      zoomControl: false
+      zoomControl: false,
     });
-    L.control.zoom({
-      position: 'bottomleft'
-    }).addTo(this.map);
+    L.control
+      .zoom({
+        position: 'bottomleft',
+      })
+      .addTo(this.map);
     this.map.whenReady(() => {
       setTimeout(() => {
         this.map.invalidateSize();
@@ -127,7 +136,7 @@ export class MapLeafletComponent implements OnInit, OnChanges {
       // set click event handler
       this.map.on('click', (e: L.LeafletMouseEvent) => {
         if (this.pendingMarker.length) {
-          this.pendingMarker.forEach(marker => {
+          this.pendingMarker.forEach((marker) => {
             this.map.removeLayer(marker);
           });
         }
@@ -149,31 +158,43 @@ export class MapLeafletComponent implements OnInit, OnChanges {
     let land = [];
 
     const group = this.properties.reduce((arr, acc): any => {
-      arr[acc.type] = [...arr[acc.type] || [], acc];
+      arr[acc.type] = [...(arr[acc.type] || []), acc];
       return arr;
     }, {});
 
     if (group.residential && group.residential.length) {
-      residential = group.residential.map((property: Property) => property.position
-        ? this.addPropertyMarker(property) : undefined).filter(property => property !== undefined);
+      residential = group.residential
+        .map((property: Property) =>
+          property.position ? this.addPropertyMarker(property) : undefined
+        )
+        .filter((property) => property !== undefined);
     }
     if (group.commercial && group.commercial.length) {
-      commercial = group.commercial.map((property: Property) => property.position
-        ? this.addPropertyMarker(property) : undefined).filter(property => property !== undefined);
+      commercial = group.commercial
+        .map((property: Property) =>
+          property.position ? this.addPropertyMarker(property) : undefined
+        )
+        .filter((property) => property !== undefined);
     }
     if (group.industrial && group.industrial.length) {
-      industrial = group.industrial.map((property: Property) => property.position
-        ? this.addPropertyMarker(property) : undefined).filter(property => property !== undefined);
+      industrial = group.industrial
+        .map((property: Property) =>
+          property.position ? this.addPropertyMarker(property) : undefined
+        )
+        .filter((property) => property !== undefined);
     }
     if (group.land && group.land.length) {
-      land = group.land.map((property: Property) => property.position
-        ? this.addPropertyMarker(property) : undefined).filter(property => property !== undefined);
+      land = group.land
+        .map((property: Property) =>
+          property.position ? this.addPropertyMarker(property) : undefined
+        )
+        .filter((property) => property !== undefined);
     }
     this.mapGroupMarkers = {
       residential: L.layerGroup(residential),
       commercial: L.layerGroup(commercial),
       industrial: L.layerGroup(industrial),
-      land: L.layerGroup(land)
+      land: L.layerGroup(land),
     };
     const ctrl = L.control.layers(this.mapGroupMarkers);
     ctrl.addTo(this.map);
@@ -184,22 +205,29 @@ export class MapLeafletComponent implements OnInit, OnChanges {
     this.map.addLayer(this.mapGroupMarkers.land);
   }
 
-
   private pinMarker(coord: Coord): void {
     const icon = this.setMarkerIcon();
-    const marker = this.mapService.addMarker(this.map, coord, { icon, popup: '' });
+    const marker = this.mapService.addMarker(this.map, coord, {
+      icon,
+      popup: '',
+    });
     marker.addTo(this.map);
     this.pendingMarker.push(marker);
   }
 
   private addPropertyMarker(property: Property) {
     // Dynamicaly Add Component to Popup
-    const component = this.resolver.resolveComponentFactory(MapPopupComponent).create(this.injector);
+    const component = this.resolver
+      .resolveComponentFactory(MapPopupComponent)
+      .create(this.injector);
     component.instance.property = property;
     component.instance.changeDetector.detectChanges();
 
     const icon = this.setMarkerIcon(property.type);
-    const marker = this.mapService.addMarker(this.map, property.position, { icon, popup: component });
+    const marker = this.mapService.addMarker(this.map, property.position, {
+      icon,
+      popup: component,
+    });
     this.markers.push(marker);
     return marker;
   }
@@ -230,8 +258,8 @@ export class MapLeafletComponent implements OnInit, OnChanges {
       iconSize: [40, 45], // size of the icon
       shadowSize: [40, 55], // size of the shadow
       iconAnchor: [22, 50], // point of the icon which will correspond to marker's location
-      shadowAnchor: [5, 40],  // the same for the shadow
-      popupAnchor: [-3, -46] // point from which the popup should open relative to the iconAnchor
+      shadowAnchor: [5, 40], // the same for the shadow
+      popupAnchor: [-3, -46], // point from which the popup should open relative to the iconAnchor
     });
   }
 }

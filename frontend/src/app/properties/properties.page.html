@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Properties Page </ion-title>
+    <ion-title> Properties Near Me</ion-title>
 
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
@@ -22,7 +22,11 @@
         <ion-col size="12" sizeMd="4">
           <ion-list>
             <ion-item lines="none">
-              <ion-toggle [disabled]="!user" (ionChange)="switchOwnedProperty($event)" [checked]="ownedPropertiesOnly()">
+              <ion-toggle
+                [disabled]="!user"
+                (ionChange)="switchOwnedProperty($event)"
+                [checked]="ownedPropertiesOnly()"
+              >
                 Owned Properties Only
               </ion-toggle>
             </ion-item>
@@ -37,7 +41,7 @@
                 [(ngModel)]="filterBy"
                 okText="Confirm"
                 cancelText="Dismiss"
-                label="Filter type:"
+                label="Preferences"
                 (ionChange)="propertyLists.setFilters(filterBy)"
               >
                 <ion-select-option
@@ -51,8 +55,6 @@
           </ion-list>
         </ion-col>
 
-
-
         <ion-col size="12" sizeMd="4">
           <ion-list>
             <ion-item lines="none">
@@ -60,7 +62,7 @@
                 [(ngModel)]="sortBy"
                 okText="Confirm"
                 cancelText="Dismiss"
-                label="Sort by:"
+                label="Sort by  "
                 (ionChange)="propertyLists.setSort(sortBy)"
               >
                 <ion-select-option
