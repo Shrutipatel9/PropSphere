@@ -37,6 +37,7 @@ export class AppComponent implements OnInit {
     { title: 'Enquiries', url: '/enquiries', icon: 'reader' },
     { title: 'Mortgage Calc', url: '/mortgage-calc', icon: 'calculator' },
     { title: 'Settings', url: '/settings', icon: 'cog' },
+    { title: 'Calc', url: '/calc', icon: 'calculator' },
   ];
 
   public appLowerPages: NavLinks[] = [

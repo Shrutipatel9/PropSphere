@@ -119,16 +119,19 @@ export class MapLeafletComponent implements OnInit, OnChanges {
       minZoom: 16,
       zoomControl: false,
     });
+
     L.control
       .zoom({
         position: 'bottomleft',
       })
       .addTo(this.map);
+
     this.map.whenReady(() => {
       setTimeout(() => {
         this.map.invalidateSize();
       }, 1000);
     });
+
     const isDark = await this.storage.getDartTheme();
     this.mapService.addTiles(this.map, isDark);
 
@@ -140,7 +143,6 @@ export class MapLeafletComponent implements OnInit, OnChanges {
             this.map.removeLayer(marker);
           });
         }
-        this.pinMarker(e.latlng);
         this.clickedAt.emit(e.latlng);
       });
     }
@@ -205,15 +207,15 @@ export class MapLeafletComponent implements OnInit, OnChanges {
     this.map.addLayer(this.mapGroupMarkers.land);
   }
 
-  private pinMarker(coord: Coord): void {
-    const icon = this.setMarkerIcon();
-    const marker = this.mapService.addMarker(this.map, coord, {
-      icon,
-      popup: '',
-    });
-    marker.addTo(this.map);
-    this.pendingMarker.push(marker);
-  }
+  // private pinMarker(coord: Coord): void {
+  //   const icon = this.setMarkerIcon();
+  //   const marker = this.mapService.addMarker(this.map, coord, {
+  //     icon,
+  //     popup: '',
+  //   });
+  //   marker.addTo(this.map);
+  //   this.pendingMarker.push(marker);
+  // }
 
   private addPropertyMarker(property: Property) {
     // Dynamicaly Add Component to Popup

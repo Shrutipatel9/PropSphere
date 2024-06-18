@@ -12,24 +12,23 @@ import { Coord } from 'src/app/shared/interface/map';
   styleUrls: ['./map-search-field.component.scss'],
 })
 export class MapSearchFieldComponent implements OnInit {
-
   @Output() selectedLocation = new EventEmitter<Coord>();
   public field = '';
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   async showSearchModal() {
     const modal = await this.modalCtrl.create({
       component: ModalSearchComponent,
       componentProps: {
         title: 'Search Location',
-        placeholder: 'Search Cities...',
+        placeholder: 'Search Your Location Here...',
         items: [...cities],
         displayProperty: 'city',
-        searchFunction: this.searchFunction
-      }
+        searchFunction: this.searchFunction,
+      },
     });
     await modal.present();
     this.field = '';
@@ -46,7 +45,7 @@ export class MapSearchFieldComponent implements OnInit {
     if (!results) {
       return;
     }
-    const items = results.map(item => {
+    const items = results.map((item) => {
       const { label, y, x } = item;
       return { city: label, lat: y, lng: x };
     });

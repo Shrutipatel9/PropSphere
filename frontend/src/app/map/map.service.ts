@@ -1,4 +1,4 @@
-import { Injectable, } from '@angular/core';
+import { Injectable } from '@angular/core';
 import * as L from 'leaflet';
 import { Coord } from 'src/app/shared/interface/map';
 import { environment } from 'src/environments/environment';
@@ -7,8 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class MapService {
-
-  constructor() { }
+  constructor() {}
 
   addTiles(map: L.Map, isDark = false) {
     const key = environment.api.mapKey;
@@ -22,13 +21,19 @@ export class MapService {
       '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>,
       &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a>
       &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-      `
+      `,
     });
     tiles.addTo(map);
   }
 
-  addMarker(map: L.Map, coord: Coord, options = { icon: null, popup: null }): L.Marker {
-    const marker = L.marker([coord.lat, coord.lng], { ...(options.icon ? { icon: options.icon } : '') });
+  addMarker(
+    map: L.Map,
+    coord: Coord,
+    options = { icon: null, popup: null }
+  ): L.Marker {
+    const marker = L.marker([coord.lat, coord.lng], {
+      ...(options.icon ? { icon: options.icon } : ''),
+    });
     if (options.popup) {
       marker.bindPopup(options.popup.location.nativeElement);
     }

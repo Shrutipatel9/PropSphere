@@ -7,11 +7,10 @@ import { PropertyType } from '../../enums/property';
   styleUrls: ['./property-badge.component.scss'],
 })
 export class PropertyBadgeComponent implements OnInit {
-
   @Input() type = 'residential';
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   typeColor() {
     switch (this.type) {

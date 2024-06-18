@@ -21,12 +21,12 @@ import { HttpClientModule } from '@angular/common/http';
     IonicStorageModule.forRoot(),
     SharedModule,
     HttpClientModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    StorageService
+    StorageService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

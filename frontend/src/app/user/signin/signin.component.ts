@@ -1,5 +1,9 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoadingController, Platform, ToastController } from '@ionic/angular';
 import { GoogleAuthResponse } from 'src/app/shared/interface/google';
@@ -42,7 +46,7 @@ export class SigninComponent implements OnInit, AfterViewInit {
       this.initializeGoogleSigninWeb();
     }
   }
-
+  nn;
   public async submit() {
     if (this.signinForm.invalid) {
       this.error = true;
@@ -68,7 +72,9 @@ export class SigninComponent implements OnInit, AfterViewInit {
   }
 
   private initializeGoogleSigninWeb(): void {
-    if (!environment.api.googleAuthClientId) { return; }
+    if (!environment.api.googleAuthClientId) {
+      return;
+    }
 
     google.accounts.id.initialize({
       client_id: environment.api.googleAuthClientId,
@@ -76,11 +82,14 @@ export class SigninComponent implements OnInit, AfterViewInit {
       auto_select: false,
       cancel_on_tap_outside: true,
     });
-    google.accounts.id.renderButton(document.getElementById('web-google-button'), {
-      theme: 'outline',
-      size: 'large',
-      width: '330px',
-    });
+    google.accounts.id.renderButton(
+      document.getElementById('web-google-button'),
+      {
+        theme: 'outline',
+        size: 'large',
+        width: '330px',
+      }
+    );
     google.accounts.id.prompt(async (notification: unknown) => {
       console.log(notification);
     });
@@ -88,7 +97,8 @@ export class SigninComponent implements OnInit, AfterViewInit {
 
   private async handleCredentialResponse(response: GoogleAuthResponse) {
     // Here will be your response from Google.
-    const loading = await this.presentLoading();
+    const loading = await this.presentLoading(); //
+
     loading.present();
     const user = await this.user.googleAuth(response);
     if (user) {

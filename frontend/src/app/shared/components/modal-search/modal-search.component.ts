@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -7,7 +14,6 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./modal-search.component.scss'],
 })
 export class ModalSearchComponent implements OnInit, AfterViewInit {
-
   @Input() title = 'Search';
   @Input() placeholder = 'Search...';
   @Input() items = [];
@@ -18,7 +24,7 @@ export class ModalSearchComponent implements OnInit, AfterViewInit {
   public itemsDisplayed = [];
   public progress = false;
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController) {}
 
   ngOnInit() {
     this.itemsDisplayed = this.items;
@@ -47,9 +53,11 @@ export class ModalSearchComponent implements OnInit, AfterViewInit {
       this.progress = false;
     } else {
       const results = [];
-      this.items.forEach(item => {
-        const found = (this.displayProperty ? item[this.displayProperty] : item)
-          .toLowerCase().indexOf(text.toLowerCase()) > -1;
+      this.items.forEach((item) => {
+        const found =
+          (this.displayProperty ? item[this.displayProperty] : item)
+            .toLowerCase()
+            .indexOf(text.toLowerCase()) > -1;
         if (found) {
           results.push(item);
         }
@@ -59,6 +67,5 @@ export class ModalSearchComponent implements OnInit, AfterViewInit {
         this.progress = false;
       }, 1000);
     }
-
   }
 }

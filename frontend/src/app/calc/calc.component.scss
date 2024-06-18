@@ -1,0 +1,112 @@
+.loan-calculator-container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 150px;
+  border-radius: 8px;
+  background-color: #ffffff;
+
+  .loan-calculator {
+    flex: 1;
+    margin-right: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 50px;
+
+      .currency-symbol {
+        background-color: #ddd;
+        color: #000; // Adjust text color to contrast with background
+        padding: 8px 10px;
+        font-size: 18px; // Adjust size as needed
+        border-right: 1px solid #ccc;
+      }
+
+      input[type="number"] {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 8px;
+        font-size: 16px;
+        // width: calc(100% - 20px);
+        // padding: 10px;
+        // margin-bottom: 50px;
+        // // border: 1px solid #ccc;
+        // // border-radius: 4px;
+        // font-size: 16px;
+      }
+    }
+
+    .range-input {
+      display: block;
+      align-items: center;
+      margin-bottom: 50px;
+
+      input[type="range"] {
+        flex: 1;
+        margin-right: 40px;
+        width: 70%;
+      }
+
+      span {
+        display: inline-block;
+        min-width: 50px;
+        text-align: right;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px 10px;
+      }
+    }
+  }
+
+  .loan-graph {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .chart-container {
+      width: 60%;
+      height: 250px;
+      margin-bottom: 20px;
+    }
+
+    .results {
+      text-align: center;
+
+      .result-item {
+        display: flex;
+        justify-content: flex-start;
+        text-align: left;
+        margin: 10px 0;
+        padding: 20px 0;
+        border-bottom: 1px solid #ddd;
+
+        .statement {
+          font-size: 18px;
+          color: #333;
+          flex: 1;
+        }
+
+        .amount {
+          font-size: 18px;
+          color: #333;
+          margin-left: 50px;
+        }
+      }
+    }
+  }
+}

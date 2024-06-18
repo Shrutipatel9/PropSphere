@@ -31,9 +31,10 @@
     "@ionic/storage-angular": "^4.0.0",
     "@ngx-markdown/core": "^0.2.2",
     "@types/google.maps": "^3.51.0",
-    "chart.js": "^3.5.1",
+    "chart.js": "^3.9.1",
     "leaflet": "^1.9.3",
     "leaflet-geosearch": "^3.7.0",
+    "ng-charts": "^1.0.0-alpha",
     "ngx-markdown": "^16.0.0",
     "rxjs": "^7.5.0",
     "swiper": "^11.0.4",
@@ -76,7 +77,7 @@
     "protractor": "~7.0.0",
     "tailwindcss": "^3.4.3",
     "ts-node": "~8.3.0",
-    "typescript": "~4.9.5"
+    "typescript": "^4.9.3"
   },
   "description": "An Ionic project"
 }

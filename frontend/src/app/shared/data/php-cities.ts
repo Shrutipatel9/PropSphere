@@ -1,5 +1,10 @@
 export default [
   {
+    city: 'India',
+    lat: '20.5937',
+    lng: '78.9629',
+  },
+  {
     city: 'Manila',
     lat: '14.6000',
     lng: '120.9833',
@@ -5033,5 +5038,5 @@ export default [
     city: 'Madridejos',
     lat: '9.7912',
     lng: '123.3462',
-  }
+  },
 ];

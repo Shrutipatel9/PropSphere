@@ -17,9 +17,12 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     IonicModule,
     SettingsPageRoutingModule,
-    SharedModule
+    SharedModule,
   ],
-  declarations: [SettingsPage, SettingsThemeComponent, SettingsCoordDefaultComponent]
+  declarations: [
+    SettingsPage,
+    SettingsThemeComponent,
+    SettingsCoordDefaultComponent,
+  ],
 })
-
-export class SettingsPageModule { }
+export class SettingsPageModule {}
