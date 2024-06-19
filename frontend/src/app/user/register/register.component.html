@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Register Page</ion-title>
+    <ion-title>Register Here</ion-title>
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -46,11 +46,10 @@
               ></ion-input>
             </ion-item>
 
-            <div
-              class="alert-errors"
-              *ngIf="registerForm.get('email').errors"
-            >
-              <app-alert-card content="Email is not valid. ex: name@email.com"></app-alert-card>
+            <div class="alert-errors" *ngIf="registerForm.get('email').errors">
+              <app-alert-card
+                content="Email is not valid. ex: name@email.com"
+              ></app-alert-card>
             </div>
 
             <ion-item>
@@ -81,10 +80,7 @@
               ></ion-input>
             </ion-item>
 
-            <div
-              class="alert-errors"
-              *ngIf="registerForm.errors?.notConfirmed"
-            >
+            <div class="alert-errors" *ngIf="registerForm.errors?.notConfirmed">
               <app-alert-card
                 content="Password not confirmed."
               ></app-alert-card>

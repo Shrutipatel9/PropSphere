@@ -9,6 +9,17 @@ ion-card-header {
 ion-item {
   --background: var(--ion-color-light);
 }
+ion-range {
+  --bar-background: #6da1ce;
+  --bar-background-active: #19538a;
+  --bar-height: 8px;
+  --bar-border-radius: 8px;
+  --knob-background: #19538a;
+  --knob-size: 30px;
+  --pin-background: #092429;
+  --pin-color: #fff;
+}
+
 .total-month {
   ion-label {
     font-weight: 600;

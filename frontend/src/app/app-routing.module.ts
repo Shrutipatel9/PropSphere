@@ -22,10 +22,6 @@ const routes: Routes = [
       import('./settings/settings.module').then((m) => m.SettingsPageModule),
   },
   {
-    path: 'calc',
-    loadChildren: () => import('./calc/calc.module').then((m) => m.CalcModule),
-  },
-  {
     path: 'properties',
     loadChildren: () =>
       import('./properties/properties.module').then(

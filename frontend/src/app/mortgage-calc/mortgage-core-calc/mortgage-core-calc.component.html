@@ -52,8 +52,22 @@
 
           <ion-col size="6">
             <ion-item>
-              <span class="ion-margin-end">%</span>
-              <ion-input
+              <ion-range
+                labelPlacement="stacked"
+                label="Stacked Label"
+                type="number"
+                min="0"
+                max="20"
+                step="0.1"
+                [pin]="false"
+                label="Interest Rate :"
+                [(ngModel)]="interestRate"
+                formControlName="interest"
+                inputmode="numeric"
+                (ionChange)="getMonthlyCalculate()"
+              ></ion-range>
+              <span class="ion-margin-end">{{ interestRate }}%</span>
+              <!-- <ion-input
                 debounce="500"
                 type="number"
                 min="0"
@@ -65,15 +79,14 @@
                 inputmode="numeric"
                 (ionChange)="getMonthlyCalculate()"
               >
-              </ion-input>
+              </ion-input> -->
             </ion-item>
           </ion-col>
 
           <ion-col size="6">
             <ion-item>
-              <span class="ion-margin-end">%</span>
-              <ion-input
-                debounce="500"
+              <ion-range
+                [(ngModel)]="LoanTerm"
                 type="number"
                 min="0"
                 max="30"
@@ -84,7 +97,8 @@
                 inputmode="numeric"
                 (ionChange)="getMonthlyCalculate()"
               >
-              </ion-input>
+              </ion-range>
+              <span class="ion-margin-end">{{ LoanTerm }}%</span>
             </ion-item>
           </ion-col>
         </ion-row>
